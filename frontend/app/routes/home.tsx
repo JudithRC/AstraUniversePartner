@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import ApiTest from "../../components/ApiTest";
+import ApiTest from "../components/ApiTest";
 
 export function meta({}: Route.MetaArgs) {
   return [

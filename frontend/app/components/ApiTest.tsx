@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../app/api";
+import api from "../services/api";
 
 export default function ApiTest() {
   const [result, setResult] = useState<string>("Cargando...");
