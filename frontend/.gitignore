@@ -1,18 +1,20 @@
-# Ignora archivos específicos del frontend
-
 # Dependencias de Node.js (si frontend es, por ejemplo, React/Vue/Angular)
-node_modules/
+/node_modules/
+.DS_Store
+
+# React Router -> Build/output
+/.react-router/
+/dist/
+/build/
+/out/
 
 # Variables de entorno
-.env
+/.env
+
+/README_REACT.md
 
 # Archivo de ejemplo sí se debe subir
-!.env.example
-
-# Build/output
-dist/
-build/
-out/
+!/.env.example
 
 # Logs
 *.log
@@ -20,6 +22,7 @@ out/
 # Cobertura de tests
 coverage/
 .nyc_output/
+
 
 # Archivos de cache
 .cache/
