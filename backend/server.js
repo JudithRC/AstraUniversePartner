@@ -13,6 +13,9 @@ app.use(cors());
 
 // Aquí puedes importar rutas y middlewares según crezca el proyecto
 
+const pingRoute = require('./routes/ping');
+app.use(pingRoute);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Servidor backend escuchando en puerto ${PORT}`);
