@@ -1,0 +1,32 @@
+# Ignora archivos y carpetas generales para todo el repo
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de editores/IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos temporales
+*.tmp
+tmp/
+temp/
+
+# Logs generales
+logs/
+*.log
+
+# Archivos de certificados/llaves
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Archivos de procesos y pids
+pids
+*.pid
+*.seed
