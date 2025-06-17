@@ -32,7 +32,7 @@ Una **app** interactiva donde los usuarios exploran un mapa visual de galaxias y
 
 ```sh
 git clone https://github.com/JudithRC/AstraUniversePartner.git
-cd tu-repo
+cd AstraUniversePartner
 # Backend
 cd backend
 npm install
