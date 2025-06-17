@@ -1,112 +1,75 @@
 # Astra Universe Partner
 
-Una **app** donde los usuarios pueden explorar un mapa interactivo de galaxias y planetas del universo de rol. Cada planeta y raza tiene su propia página con lore, estadísticas y una sección de misiones o eventos. El objetivo es dar vida visual al universo y que los jugadores lo consulten tanto dentro como fuera de Discord.
+Una **app** interactiva donde los usuarios exploran un mapa visual de galaxias y planetas del universo de rol. Cada planeta y raza cuenta con su propia página de lore, estadísticas y misiones. El objetivo: dar vida visual al universo y que los jugadores lo consulten tanto dentro como fuera de Discord.
+
+<!-- Puedes añadir aquí un logo o banner más adelante -->
+<!-- ![Captura de Pantalla o Logo](URL_DE_LA_IMAGEN) -->
 
 ---
 
-## Estructura del Proyecto
+## Características principales
 
-```
-/src
-  /api            # Funciones para llamar a endpoints (axios instances)
-  /components     # Componentes genéricos: Button, Card, Avatar, Loader…
-  /screens
-    Auth
-      LoginScreen.js
-      RegisterScreen.js
-    Home
-      MapScreen.js
-      PlanetaDetailScreen.js
-    Profile
-      ProfileScreen.js
-      EditProfileScreen.js
-    Catalogs
-      HabilidadesScreen.js
-      MisionesScreen.js
-    Offline
-      LoreOfflineScreen.js
-  /navigation     # Definiciones de navegadores (Stacks / Tabs)
-  /context        # (Opcional) Contexto para manejar auth y user global
-  /utils          # Helpers: formatFecha, validarEmail, etc.
-  /assets         # Imágenes, íconos estáticos
-App.js
-```
+- Registro e inicio de sesión con autenticación segura.
+- Creación y edición de personaje, incluyendo avatar, raza y planeta de origen.
+- Mapa interactivo de galaxias y planetas, con fichas detalladas y lore.
+- Catálogo de habilidades y misiones actualizado desde el API.
+- Notificaciones push para logros y desbloqueos.
+- Consulta de lore y estadísticas incluso sin conexión (modo offline).
+- Navegación intuitiva y visual.
 
 ---
 
-## Funcionalidades
+## ¿Por qué elegir Astra Universe Partner?
 
-1. **Registro/Login**
-    - Registro con email, contraseña y nombre de usuario.
-    - Login para autenticar y guardar JWT localmente.
-
-2. **Perfil de Usuario / Personaje**
-    - Crear o editar personaje: nombre, avatar (subida o selección), raza, planeta de origen, Ki/XP inicial (0).
-    - Ver pantalla de perfil con Ki total, XP total y lista de transformaciones desbloqueadas.
-
-3. **Mapa de Galaxias / Planetas**
-    - Mapa 2D (o esquemático) de galaxias y planetas.
-    - Los “pins” se obtienen del API (`GET /api/planetas` y `GET /api/galaxias`).
-    - Al tocar un planeta, se muestra su ficha: nombre, imagen, descripción, fundador, razas asociadas.
-
-4. **Listado de Habilidades**
-    - Pantalla “Habilidades” con catálogo fijo de técnicas aprobadas desde el API.
-
-5. **Listado de Misiones**
-    - Pantalla “Misiones” con catálogo informativo de misiones activas (título, descripción, recompensaXP).
-
-6. **Notificaciones Push de Ki**
-    - Al alcanzar múltiplos de 10 000 Ki, la app envía un push recordando que se ha desbloqueado una nueva habilidad/transformación.
-
-7. **Modo Offline de Lore / Descripciones**
-    - Descarga inicial de planetas y descripciones para consulta offline.
+- **Visualiza el universo**: explora galaxias, planetas y razas de forma gráfica.
+- **Lore centralizado**: accede a información y eventos desde un solo lugar, dentro o fuera de Discord.
+- **Actualizaciones en tiempo real**: misiones, habilidades y eventos se mantienen sincronizados con el API.
+- **Optimizada para jugadores**: fácil de navegar y consultar, incluso offline.
 
 ---
 
-## Descripción General
-
-- Navega por un universo visual de galaxias y planetas.
-- Consulta lore, estadísticas y eventos de cada planeta y raza.
-- Accede a misiones y habilidades del universo.
-- Consulta información incluso sin conexión.
-
----
-
-## Instalación del proyecto
-
-### 1. Clona o haz fork del repositorio
+## Instalación rápida
 
 ```sh
-git clone https://github.com/tuusuario/tu-repo.git
+git clone https://github.com/JudithRC/AstraUniversePartner.git
 cd tu-repo
-```
-
-### 2. Instala las dependencias del backend
-
-```sh
+# Backend
 cd backend
 npm install
-```
-
-### 3. Instala las dependencias del frontend
-
-```sh
+# Frontend
 cd ../frontend
 npm install
 ```
 
-### 4. Configura las variables de entorno
-
-- Copia los archivos `.env.example` a `.env` tanto en `/backend` como en `/frontend` y completa los valores necesarios.
-
-### 5. Ejecuta el proyecto
-
-(Sigue las instrucciones específicas para levantar backend y frontend)
+1. Copia `.env.example` a `.env` en `/backend` y `/frontend`, y completa los valores necesarios.
+2. Sigue las instrucciones específicas para levantar backend y frontend (ver documentación).
 
 ---
 
-## Contribución
+## Ejemplo de uso
 
-Pull requests y sugerencias son bienvenidas.
+<!-- Añade aquí un ejemplo de uso cuando la app esté lista para ello. -->
 
 ---
+
+## Documentación
+
+Encuentra la documentación completa (arquitectura, endpoints, guías y mucho más) en la [Wiki](https://github.com/JudithRC/AstraUniversePartner/wiki).
+
+---
+
+## Estado del proyecto
+
+🚧 En desarrollo
+
+---
+
+## Cómo contribuir
+
+¡Las contribuciones y sugerencias son bienvenidas! Consulta el apartado de [contribuciones en la Wiki](https://github.com/JudithRC/AstraUniversePartner/wiki/Contribuir-al-Proyecto) para más detalles y buenas prácticas.
+
+---
+
+## Licencia
+
+[MIT](LICENSE)
