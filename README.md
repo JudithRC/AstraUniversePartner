@@ -72,11 +72,36 @@ App.js
 
 ---
 
-## Instalación
+## Instalación del proyecto
 
-1. Clona el repositorio.
-2. Instala dependencias con `npm install` o `yarn`.
-3. Ejecuta la app con `npm start` o `expo start`.
+### 1. Clona o haz fork del repositorio
+
+```sh
+git clone https://github.com/tuusuario/tu-repo.git
+cd tu-repo
+```
+
+### 2. Instala las dependencias del backend
+
+```sh
+cd backend
+npm install
+```
+
+### 3. Instala las dependencias del frontend
+
+```sh
+cd ../frontend
+npm install
+```
+
+### 4. Configura las variables de entorno
+
+- Copia los archivos `.env.example` a `.env` tanto en `/backend` como en `/frontend` y completa los valores necesarios.
+
+### 5. Ejecuta el proyecto
+
+(Sigue las instrucciones específicas para levantar backend y frontend)
 
 ---
 
