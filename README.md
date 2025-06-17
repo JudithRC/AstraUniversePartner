@@ -42,7 +42,7 @@ npm install
 ```
 
 1. Copia `.env.example` a `.env` en `/backend` y `/frontend`, y completa los valores necesarios.
-2. Sigue las instrucciones específicas para levantar backend y frontend (ver documentación).
+2. Sigue las instrucciones específicas para levantar backend y frontend (ver documentación para el [backend](https://github.com/JudithRC/AstraUniversePartner/wiki/API-y-Backend) y para el [frontend](https://github.com/JudithRC/AstraUniversePartner/wiki/Frontend-y-Aplicación-Web)).
 
 ---
 
