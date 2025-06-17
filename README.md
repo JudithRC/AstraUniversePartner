@@ -3,7 +3,7 @@
 Una **app** interactiva donde los usuarios exploran un mapa visual de galaxias y planetas del universo de rol. Cada planeta y raza cuenta con su propia página de lore, estadísticas y misiones. El objetivo: dar vida visual al universo y que los jugadores lo consulten tanto dentro como fuera de Discord.
 
 <!-- Puedes añadir aquí un logo o banner más adelante -->
-<!-- ![Captura de Pantalla o Logo](URL_DE_LA_IMAGEN) -->
+![Banner del proyecto](frontend/app/assets/img/banner.png)
 
 ---
 
