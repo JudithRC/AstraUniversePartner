@@ -1,13 +1,12 @@
 const admin = require('firebase-admin');
+const fs = require('fs');
+const path = process.env.FIREBASE_SERVICE_ACCOUNT_PATH || './serviceAccountKey.test.json';
 
-const serviceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-};
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+if (fs.existsSync(path)) {
+  const serviceAccount = JSON.parse(fs.readFileSync(path, 'utf8'));
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
 module.exports = admin;

@@ -1,22 +1,23 @@
-require('dotenv').config();
+if (process.env.NODE_ENV === 'test') {
+  require('dotenv').config({ path: require('path').resolve(__dirname, '.env.test') });
+  console.log('Cargando .env.test');
+} else {
+  require('dotenv').config();
+  console.log('Cargando .env');
+}
 
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const firebaseAdmin = require('./config/firebase');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('TEST_MONGO_URI:', process.env.TEST_MONGO_URI);
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
+console.log('FIREBASE_SERVICE_ACCOUNT_PATH:', process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
+
 const connectDB = require('./config/db');
-connectDB();
+const app = require('./app');
 
-// Middlewares generales
-app.use(express.json());
-app.use(cors());
+const PORT = process.env.PORT || 3000;
 
-// Aquí puedes importar rutas y middlewares según crezca el proyecto
-
-const pingRoute = require('./routes/ping');
-app.use(pingRoute);
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Servidor backend escuchando en puerto ${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
+  });
 });
