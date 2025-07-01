@@ -1,6 +1,6 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const app = require('../app'); // Ajusta si tu entrypoint es diferente
+const app = require('../../app');
 const User = require('../models/User');
 
 describe('POST /auth/register', () => {
@@ -21,36 +21,55 @@ describe('POST /auth/register', () => {
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Test User',
-        email: 'TestUser@example.com',
+        nombre: 'TestUser',
+        email: 'testuser@example.com',
         password: 'password123'
       });
-    console.log(res.body); // debugging line
     expect(res.statusCode).toBe(201);
     expect(res.body.token).toBeDefined();
     expect(res.body.msg).toMatch(/Usuario registrado/i);
   });
 
-  it('No permite duplicar email', async () => {
+  it('No permite duplicar nombre', async () => {
     await User.create({
-      nombre: 'Test User',
-      email: 'duplicate@example.com',
+      nombre: 'Duplicado',
+      email: 'duplicado@example.com',
       password: 'password123'
     });
 
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Otro User',
-        email: 'duplicate@example.com',
+        nombre: 'Duplicado',
+        email: 'otroemail@example.com',
         password: 'password456'
       });
 
     expect(res.statusCode).toBe(400);
-    expect(res.body.errores[0].msg).toMatch(/ya está registrado/i);
-    // Asegura que no se creó un segundo usuario
-    const users = await User.find({ email: 'duplicate@example.com' });
+    expect(res.body.errores[0].msg).toMatch(/nombre de usuario ya está registrado/i);
+
+    // Debe seguir habiendo solo un usuario con ese nombre
+    const users = await User.find({ nombre: 'Duplicado' });
     expect(users.length).toBe(1);
+  });
+
+  it('No permite duplicar email', async () => {
+    await User.create({
+      nombre: 'User1',
+      email: 'correo@existe.com',
+      password: 'password123'
+    });
+
+    const res = await request(app)
+      .post('/auth/register')
+      .send({
+        nombre: 'User2',
+        email: 'correo@existe.com',
+        password: 'password456'
+      });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body.errores[0].msg).toMatch(/email ya está registrado/i);
   });
 
   it('Valida campos obligatorios', async () => {
@@ -65,11 +84,35 @@ describe('POST /auth/register', () => {
     expect(mensajes).toMatch(/contraseña|password/i);
   });
 
+  it('Valida nombre demasiado corto', async () => {
+    const res = await request(app)
+      .post('/auth/register')
+      .send({
+        nombre: 'AB',
+        email: 'shortname@example.com',
+        password: 'password123'
+      });
+    expect(res.statusCode).toBe(400);
+    expect(res.body.errores[0].msg).toMatch(/nombre.*3.*15/i);
+  });
+
+  it('Valida nombre demasiado largo', async () => {
+    const res = await request(app)
+      .post('/auth/register')
+      .send({
+        nombre: 'EsteNombreEsDemasiadoLargo',
+        email: 'longname@example.com',
+        password: 'password123'
+      });
+    expect(res.statusCode).toBe(400);
+    expect(res.body.errores[0].msg).toMatch(/nombre.*3.*15/i);
+  });
+
   it('Valida email con formato incorrecto', async () => {
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Nombre',
+        nombre: 'NombreValido',
         email: 'no-valido',
         password: 'password123'
       });
@@ -81,7 +124,7 @@ describe('POST /auth/register', () => {
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Nombre',
+        nombre: 'NombreValido2',
         email: 'test2@example.com',
         password: '123'
       });
@@ -96,7 +139,7 @@ describe('POST /auth/register', () => {
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Extra Fields',
+        nombre: 'ExtraFields',
         email: 'extrafields@example.com',
         password: 'password123',
         rol: 'admin',
@@ -104,7 +147,7 @@ describe('POST /auth/register', () => {
         otroCampo: 'no permitido'
       });
     expect(res.statusCode).toBe(201);
-    const user = await User.findOne({ email: 'extrafields@example.com' });
+    const user = await User.findOne({ nombre: 'ExtraFields' });
     expect(user.rol).toBe('usuario'); // No debe ser admin
     expect(user.estado).toBe('activo'); // No debe ser inactivo
     expect(user.otroCampo).toBeUndefined();
@@ -114,7 +157,7 @@ describe('POST /auth/register', () => {
     const res = await request(app)
       .post('/auth/register')
       .send({
-        nombre: 'Test User',
+        nombre: 'SecUser',
         email: 'security@example.com',
         password: 'password123'
       });
