@@ -2,6 +2,16 @@ const { validationResult } = require('express-validator');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+/**
+ * Controlador para registrar un nuevo usuario.
+ * Valida los datos, verifica unicidad y crea el usuario.
+ * 
+ * @async
+ * @function registerUser
+ * @param {import('express').Request} req - Objeto de solicitud HTTP.
+ * @param {import('express').Response} res - Objeto de respuesta HTTP.
+ * @returns {Promise<void>}
+ */
 exports.registerUser = async (req, res) => {
   // Sanitizar nombre y email antes de validar
   if (req.body.nombre) req.body.nombre = req.body.nombre.trim();
@@ -63,6 +73,16 @@ exports.registerUser = async (req, res) => {
   }
 };
 
+/**
+ * Controlador para iniciar sesión de usuario.
+ * Valida los datos y genera un token JWT si las credenciales son correctas.
+ * 
+ * @async
+ * @function loginUser
+ * @param {import('express').Request} req - Objeto de solicitud HTTP.
+ * @param {import('express').Response} res - Objeto de respuesta HTTP.
+ * @returns {Promise<void>}
+ */
 exports.loginUser = async (req, res) => {
   // Validar campos
   const errors = validationResult(req);

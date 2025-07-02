@@ -1,3 +1,8 @@
+/**
+ * Rutas de autenticación para registro y login de usuarios.
+ * @module routes/auth
+ */
+
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
@@ -10,23 +15,40 @@ const authLimiter = rateLimit({
   message: 'Demasiados intentos, intenta nuevamente más tarde'
 });
 
-// Validaciones para el registro de usuario
+/**
+ * Validaciones para el registro de usuario.
+ * - nombre: requerido
+ * - email: debe ser válido
+ * - password: mínimo 6 caracteres
+ */
 const registerValidations = [
   check('nombre').notEmpty().withMessage('El nombre es requerido'),
   check('email').isEmail().withMessage('Debes proporcionar un email válido'),
   check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres')
 ];
 
-// Validaciones para login
+/**
+ * Validaciones para login de usuario.
+ * - nombre: requerido
+ * - password: requerido
+ */
 const loginValidations = [
   check('nombre').notEmpty().withMessage('El nombre es requerido'),
   check('password').notEmpty().withMessage('La contraseña es requerida')
 ];
 
-// Endpoint para registrar un nuevo usuario
+/**
+ * @route POST /register
+ * @desc Registrar un nuevo usuario
+ * @access Público (limitado por rate limiter)
+ */
 router.post('/register', authLimiter, registerValidations, authController.registerUser);
 
-// Endpoint para iniciar sesión
+/**
+ * @route POST /login
+ * @desc Iniciar sesión de usuario
+ * @access Público (limitado por rate limiter)
+ */
 router.post('/login', authLimiter, loginValidations, authController.loginUser);
 
 module.exports = router;
