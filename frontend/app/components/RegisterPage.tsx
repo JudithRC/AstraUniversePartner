@@ -79,7 +79,7 @@ const RegisterPage: React.FC = () => {
         aria-hidden="true"
         draggable={false}
       />
-      <form className="register-form" onSubmit={handleSubmit} autoComplete="off">
+      <form className="register-form" onSubmit={handleSubmit} autoComplete="off" noValidate>
         <h1 className="register-title">Create your account</h1>
         <div className="input-group">
           <input
