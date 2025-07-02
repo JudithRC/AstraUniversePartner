@@ -8,10 +8,11 @@ if (process.env.NODE_ENV === 'test') {
 
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('TEST_MONGO_URI:', process.env.TEST_MONGO_URI);
+console.log('MONGO_URI:', process.env.MONGODB_URI);
 console.log('JWT_SECRET:', process.env.JWT_SECRET);
 console.log('FIREBASE_SERVICE_ACCOUNT_PATH:', process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
 
-const connectDB = require('./config/db');
+const connectDB = require('./api/config/db');
 const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
