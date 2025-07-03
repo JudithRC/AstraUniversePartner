@@ -57,14 +57,16 @@ export default function LandingPage() {
 
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-300 hover:text-white hover:bg-purple-900/20 text-xs lg:text-sm"
-              >
-                <LogIn className="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" />
-                Login
-              </Button>
+              <Link to="/login">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-300 hover:text-white hover:bg-purple-900/20 text-xs lg:text-sm"
+                >
+                  <LogIn className="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" />
+                  Login
+                </Button>
+              </Link>
               <Link to="/register">
                 <Button
                   variant="ghost"
@@ -112,14 +114,16 @@ export default function LandingPage() {
                   Contact
                 </a>
                 <div className="flex flex-col space-y-2 pt-2 border-t border-purple-900/20">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-gray-300 hover:text-white hover:bg-purple-900/20 justify-start"
-                  >
-                    <LogIn className="w-4 h-4 mr-2" />
-                    Login
-                  </Button>
+                  <Link to="/login">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-gray-300 hover:text-white hover:bg-purple-900/20 justify-start w-full"
+                    >
+                      <LogIn className="w-4 h-4 mr-2" />
+                      Login
+                    </Button>
+                  </Link>
                   <Link to="/register">
                     <Button
                       variant="ghost"
@@ -141,14 +145,12 @@ export default function LandingPage() {
       <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 xl:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-black"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]"></div>
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 sm:mb-6 bg-purple-900/30 text-purple-300 border-purple-700/50 text-xs sm:text-sm">
               <Zap className="w-3 h-3 mr-1" />
               Now in Beta
             </Badge>
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
               Explore the{" "}
               <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">
@@ -157,12 +159,10 @@ export default function LandingPage() {
               <br />
               Create Your Legend
             </h1>
-
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
               Immerse yourself in an epic space roleplay adventure. Create unique characters, explore vast galaxies, and
               forge your destiny among the stars.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
               <Link to="/register" className="w-full sm:w-auto">
                 <Button
@@ -194,7 +194,6 @@ export default function LandingPage() {
               Discover the tools and systems that make your space roleplay experience unforgettable
             </p>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             <Card className="bg-gray-900/50 border-purple-900/30 hover:border-purple-700/50 transition-all duration-300 group">
               <CardContent className="p-4 sm:p-6">
