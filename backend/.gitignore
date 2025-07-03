@@ -5,7 +5,9 @@ node_modules/
 
 # Variables de entorno
 .env
-
+.env.test
+serviceAccountKey.json
+serviceAccountKey.test.json
 # Archivo de ejemplo sí se debe subir
 !.env.example
 

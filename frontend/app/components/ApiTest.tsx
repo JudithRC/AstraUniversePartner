@@ -8,7 +8,10 @@ export default function ApiTest() {
   useEffect(() => {
     api.get("/ping")
       .then(response => setResult(JSON.stringify(response.data)))
-      .catch(err => setError("Error conectando con el backend: " + err.message));
+      .catch(err => {
+        console.error("API error:", err);
+        setError("Error conectando con el backend: " + err.message);
+      });
   }, []);
 
   if (error) return <div style={{ color: "red" }}>{error}</div>;
